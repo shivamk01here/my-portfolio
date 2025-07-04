@@ -7,6 +7,7 @@ import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import ProCoder from './components/codingProfile';
 import './index.css';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Hero />
       <About />
       <Skills />
+      <ProCoder />
       <Experience />
       <Projects />
       <Contact />

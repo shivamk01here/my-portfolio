@@ -15,7 +15,7 @@ const Hero = () => {
   const stars = generateStars(120);
 
   return (
-    <section className="relative min-h-screen bg-gray-950 text-white flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen bg-gray-800 text-white flex items-center justify-center overflow-hidden">
       {/* Starfield Background */}
       <div className="absolute inset-0 z-0">
         {stars.map((star) => (

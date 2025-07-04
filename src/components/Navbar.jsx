@@ -23,59 +23,72 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'glass py-2' : 'py-4'
-    }`}>
+    <nav 
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ease-out ${
+        scrolled ? 'bg-gray-800/95 backdrop-blur-md shadow-lg py-2' : 'bg-gray-800/80 py-3'
+      }`}
+      style={{
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold">
-            <span className="gradient-text">SK</span>
+          {/* Desktop Menu - Centered */}
+          <div className="hidden md:flex flex-1 justify-center">
+            <div className="flex space-x-6 lg:space-x-8">
+              {navItems.map((item, index) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="relative text-gray-300 hover:text-white transition-all duration-300 text-sm lg:text-base font-medium group py-2"
+                  style={{
+                    animationDelay: `${index * 100}ms`,
+                  }}
+                >
+                  {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-500 group-hover:w-full transition-all duration-300"></span>
+                </a>
+              ))}
+            </div>
           </div>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
-
-          <button className="hidden md:block bg-primary-500 hover:bg-primary-600 px-6 py-2 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-primary-500/25">
-            Hire Me
-          </button>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center justify-end">
+            <button
+              className="p-2 rounded-lg bg-gray-700/50 hover:bg-gray-600/50 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+            >
+              <div className="transition-transform duration-300">
+                {isOpen ? <X size={24} className="text-white" /> : <Menu size={24} className="text-white" />}
+              </div>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden mt-4 pb-4">
-            {navItems.map((item) => (
+        <div 
+          className={`md:hidden overflow-hidden transition-all duration-500 ease-out ${
+            isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className="pt-4 pb-3 space-y-1">
+            {navItems.map((item, index) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="block py-2 text-gray-300 hover:text-primary-400"
+                className="block py-3 px-4 text-gray-300 hover:text-white hover:bg-gray-700/50 rounded-lg transition-all duration-300 transform hover:translate-x-2 text-base font-medium text-center"
                 onClick={() => setIsOpen(false)}
+                style={{
+                  animationDelay: `${index * 50}ms`,
+                }}
               >
                 {item.name}
               </a>
             ))}
-            <button className="bg-primary-500 hover:bg-primary-600 px-6 py-2 rounded-full mt-4">
-              Hire Me
-            </button>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );
