@@ -39,7 +39,7 @@ const ProCoder = () => {
       name: 'GitHub',
       icon: 'giti.png',
       label: 'Open Source',
-      url: 'https://github.com/shivam01here'
+      url: 'https://github.com/shivamk01here/'
     }
   ];
 

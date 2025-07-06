@@ -28,7 +28,7 @@ const Projects = () => {
       description: "Scalable event-driven SaaS platform with microservices architecture for student onboarding, invoicing, payments, and messaging systems.",
       technologies: ["Node.js", "TypeScript", "React", "Docker", "AWS", "RabbitMQ", "MySQL"],
       liveLink: "tapclass.netlify.app",
-      githubLink: "#",
+      githubLink: "https://github.com/shivamk01here/TapClass-node",
       image: "/image1.png",
       gradient: "from-blue-500/20 to-purple-500/20",
       accent: "blue"
@@ -52,6 +52,16 @@ const Projects = () => {
       image: "/image3.png",
       gradient: "from-orange-500/20 to-red-500/20",
       accent: "orange"
+    },
+    {
+      title: "HIVE - Project Mangement Tool",
+      description: "real time notification on mail, sprint creation, admin and role wise database access, authentication. From task creation or sprint creation to kanban board to take overview and department wise access for different teams in the same organization it have everything.",
+      technologies: ["Laravel", "Bootstrap", "Jquery", "Digital Ocean", "php", "redis", "MySQL"],
+      liveLink: "hive.ixambee.com",
+      githubLink: "https://github.com/shivamk01here/Hive-Project_Management_Software",
+      image: "/hive.png",
+      gradient: "from-blue-500/20 to-purple-500/20",
+      accent: "blue"
     }
   ];
 
