@@ -1,5 +1,5 @@
 // src/App.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -11,6 +11,15 @@ import ProCoder from './components/codingProfile';
 import './index.css';
 
 function App() {
+  // 🔥 Inject Umami Tracking
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.setAttribute('defer', '');
+    script.setAttribute('src', 'https://cloud.umami.is/script.js');
+    script.setAttribute('data-website-id', '30994586-6a85-4c1c-9f95-5aa15ec021ea');
+    document.head.appendChild(script);
+  }, []);
+
   return (
     <div className="bg-dark-400 text-white min-h-screen">
       <Navbar />

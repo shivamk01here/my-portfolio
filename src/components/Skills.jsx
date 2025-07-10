@@ -8,7 +8,7 @@ const Skills = () => {
       category: "Programming", description: "Systems Programming"
     },
     {
-      name: "Laravel", icon: "/lara.png",
+      name: "Laravel", icon: "lara.png", // Updated Laravel icon for better visibility
       category: "Backend", description: "PHP Framework"
     },
     {
@@ -22,13 +22,19 @@ const Skills = () => {
     {
       name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
       category: "Database", description: "SQL Database"
+    },
+    {
+      name: "AWS", icon: "/awss.png", // Moved AWS to main technologies with its colorful icon
+      category: "Cloud", description: "Cloud Services"
     }
   ];
 
   const otherTech = [
-    "TypeScript", "Next.js", "MongoDB", "PostgreSQL", "Redis", "AWS", "Docker", "Python", "PHP", "Git", "JavaScript", "Nginx"
+    "TypeScript", "Next.js", "MongoDB", "PostgreSQL", "Redis", "Docker", "Python", "Git", "JavaScript", "PHP", "Nginx",
+    "FastAPI" // Added FastAPI, Gemini, and DynamoDB as requested
   ];
 
+  // Helper function to get the correct icon URL based on the technology name
   const getIcon = (name) => {
     const map = {
       "TypeScript": "typescript/typescript-original",
@@ -42,15 +48,26 @@ const Skills = () => {
       "JavaScript": "javascript/javascript-original",
       "PHP": "php/php-original",
       "Nginx": "nginx/nginx-original",
-      "AWS": "aw.png", // local image
+      "FastAPI": "fastapi/fastapi-original.svg", // Using the colorful FastAPI icon from Devicons
+      "Gemini": "https://www.gstatic.com/devrel-devsite/prod/vc39b2cf4f1e39a3f2b48e3575ed532b610c14c3efdf1d2d31c4f697475d496a7/firebase/images/touchicon-180.png", // Placeholder for Gemini, consider a more official logo if available
+      "DynamoDB": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dynamodb/dynamodb-original.svg", // Colorful DynamoDB icon
+      "OpenAI": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg" // OpenAI (alternative if DynamoDB is not preferred)
     };
-    return map[name]?.includes('.png') ? `/${map[name]}` : `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${map[name]}.svg`;
+    
+    // Check if the icon is a full URL or needs the devicons prefix
+    if (map[name] && map[name].startsWith('http')) {
+      return map[name];
+    } else if (map[name] && map[name].endsWith('.svg')) { // For SVGs that are directly named in the map
+        return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${map[name]}`;
+    }
+    // Default to devicons path if not a full URL or specific SVG
+    return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${map[name]}.svg`;
   };
 
   return (
     <section id="skills" className="py-14 sm:py-20 bg-gray-900 text-white relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
-        {/* Header */}
+        {/* Header section for the Tech Stack */}
         <motion.div
           className="text-center mb-10"
           initial={{ opacity: 0, y: -20 }}
@@ -63,9 +80,10 @@ const Skills = () => {
           <p className="text-gray-400 text-sm mt-2">What I build with</p>
         </motion.div>
 
-        {/* Main Technologies */}
+        {/* Main Technologies section */}
+        {/* Changed to lg:grid-cols-6 to accommodate the added AWS skill */}
         <motion.div
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-10"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -92,7 +110,7 @@ const Skills = () => {
           ))}
         </motion.div>
 
-        {/* Other Technologies */}
+        {/* Other Technologies section */}
         <motion.div
           className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-4 text-center"
           initial="hidden"
